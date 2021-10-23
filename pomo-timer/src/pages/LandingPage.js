@@ -92,7 +92,7 @@ const LandingPage = () => {
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIXJJBul3Ro37snNJJe-1lAXOW2sN4aiGWNV-6ipwrifTxg3kzE3wRwzeaBfL_ItzX8hc&usqp=CAU' alt='pomodoro-clock' />
         <p>O método se chama “Pomodoro” (tomate, em italiano) porque Cirillo usava um daqueles relógios de cozinha em formato de tomate para controlar o seu tempo.</p>
         <a style={ { fontSize: 'large', marginBottom: '2em' } } href='https://github.com/JRGCast/pomo-timer' target="_blank"
-          rel="noreferrer noopener">Ir até o repositório</a>
+          rel="noreferrer noopener">Ir até o repositório</a> 
       </footer>
     </div>
   );
