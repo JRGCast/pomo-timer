@@ -6,6 +6,7 @@ const LandingPage = () => {
   const [task, setTask] = useState('Nenhuma');
   const [taskTime, setTaskTime] = useState(-1);
   const [intervalTime, setIntervalTime] = useState(-1);
+  const [dateTask, setDateTask] = useState('');
   useEffect(() => {
     if (taskTime > 0 && intervalTime < 0) {
       setIntervalTime(Math.round(taskTime / 5));
@@ -27,29 +28,35 @@ const LandingPage = () => {
     }
   }, [taskTime, intervalTime]);
 
-  // const dateImplements = (seconds) => {
-  //   const options = {
-  //     weekday: 'long',
-  //     year: 'numeric',
-  //     month: 'long',
-  //     day: 'numeric',
-  //     hour12: false,
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //     second: "2-digit"
-  //   };
-  //   const theDeadline = new Date();
-  //   theDeadline.setSeconds(theDeadline.getSeconds() + seconds);
-  //   return theDeadline.toLocaleDateString('pt-br', options);
-  // };
+  const dateImplements = (seconds) => {
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    };
+    const theDeadline = new Date();
+    theDeadline.setSeconds(theDeadline.getSeconds() + seconds);
+    return theDeadline.toLocaleDateString('pt-br', options);
+  };
 
   const initPomo = () => {
     const theInput = document.getElementById('input-task');
     const theTimeNumber = document.getElementById('input-time');
     const theTimeMode = document.getElementById('select-time');
     setTask(theInput.value !== '' ? theInput.value : 'Inominada');
-    theTimeMode.value === 'minutos' ?
-      setTaskTime(theTimeNumber.value * 60) : setTaskTime(theTimeNumber.value);
+    if (theTimeMode.value === 'minutos') {
+      setTaskTime(theTimeNumber.value * 60);
+      setDateTask(dateImplements(Number(theTimeNumber.value * 60)));
+    } else {
+      setTaskTime(theTimeNumber.value);
+      setDateTask(dateImplements(Number(theTimeNumber.value)));
+    }
+
   };
 
   return (
@@ -84,6 +91,7 @@ const LandingPage = () => {
           </div>
           : <div className='content-wrapper'>
             <h2>Tarefa: { task }</h2>
+            <h2> Data final da tarefa e início do intervalo: { dateTask } </h2>
             <h2> Tempo restante da tarefa: { taskTime } segundos </h2>
             <h2> Tempo restante do intervalo: { intervalTime } segundos </h2>
           </div> }
