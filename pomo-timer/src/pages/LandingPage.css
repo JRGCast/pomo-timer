@@ -1,0 +1,66 @@
+:root {
+  --whitecolor: whitesmoke;
+  --tomatocolor: tomato;
+}
+
+* {
+  color: var(--whitecolor);
+  background-color: var(--tomatocolor);
+}
+
+p {
+  text-align: justify;
+  text-indent: 2em;
+}
+
+input {
+  font-size: 1.2em;
+}
+
+input:focus, input:hover {
+  background-color: var(--whitecolor);
+  color: var(--tomatocolor);
+}
+
+.main-wrapper {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.content-wrapper {
+  align-items: center;
+  border: 5px solid var(--whitecolor);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1em;
+  width: 80%;
+}
+
+.task-wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 1.2em;
+  padding: 1em;
+  width: fit-content;
+}
+
+.input-number {
+  width: 2em;
+}
+
+.init-btn {
+  font-size: 3em;
+  width: 50%;
+}
+
+.init-btn:hover {
+  background-color: var(--whitecolor);
+  color: var(--tomatocolor);
+}
+
+.slct-time {
+  font-size: 1.2em;
+  width: fit-content;
+}

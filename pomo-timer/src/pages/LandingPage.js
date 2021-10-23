@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import acabo from '../sounds/acabou.mp3';
+import './LandingPage.css';
 
 const LandingPage = () => {
   const [task, setTask] = useState('Nenhuma');
@@ -53,38 +54,44 @@ const LandingPage = () => {
 
   return (
     <div>
-      <header>
-        <h1>Bem-vindo ao método Pomodoro!</h1>
+      <header style={ { margin: '0 auto', width: '80%' } }>
+        <h1>Bem-vindo ao método Pomodoro Personalizado!</h1>
         <p>A Técnica Pomodoro é um método de gerenciamento de tempo desenvolvido por
           Francesco Cirillo no final dos anos 1980. A técnica usa um cronômetro para dividir o
           trabalho em intervalos, tradicionalmente de 25 minutos de duração, separados por
           intervalos curtos - 5 minutos.</p>
+        <p>Aqui a técnica pode ser aplicada com alguma personalização, mas, para respeitar a técnica original, o intervalo seguirá o parâmetro de 1/5 do tempo da tarefa. </p>
       </header>
-      <main>
+      <main className='main-wrapper'>
+        <hr />
         { task === 'Nenhuma' ?
-          <div>
-            <hr />
-            <label htmlFor='input-task'>Qual é a tarefa? </label>
-            <input id='input-task' type='text'></input><br />
-            <label htmlFor='input-time'> E qual o tempo estimado? </label>
-            <input id='input-time' type='number' defaultValue={ 25 } min={ 5 }></input>&nbsp;
-            <select id='select-time'>
-              <option>segundos</option>
-              <option>minutos</option>
-            </select>
-            <p> O intervalo será de 1/5 do tempo da tarefa </p>
+          <div className='content-wrapper'>
+            <div className='task-wrapper'>
+              <label htmlFor='input-task'>Qual é a tarefa? </label>
+              <input id='input-task' className='input-tsk' type='text'></input>
+            </div>
             <br />
-            <button id='init-button' type='submit' onClick={ initPomo }> Iniciar tarefa </button>
-            <hr />
+            <div style={ { marginBottom: '2em' } }>
+              <label htmlFor='input-time'> E qual o tempo estimado? </label>
+              <input id='input-time' className='input-number' type='number' defaultValue={ 25 } min={ 5 }></input>&nbsp;
+              <select id='select-time' className='slct-time'>
+                <option>segundos</option>
+                <option>minutos</option>
+              </select>
+            </div>
+            <br />
+            <button id='init-button' className='init-btn' type='submit' onClick={ initPomo }> Iniciar tarefa </button>
           </div>
-          : <div>
-            <hr />
+          : <div className='content-wrapper'>
             <h2>Tarefa: { task }</h2>
             <h2> Tempo restante da tarefa: { taskTime } segundos </h2>
             <h2> Tempo restante do intervalo: { intervalTime } segundos </h2>
-            <hr />
           </div> }
       </main>
+      <footer style={ { margin: '0 auto', width: '80%' } }>
+        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIXJJBul3Ro37snNJJe-1lAXOW2sN4aiGWNV-6ipwrifTxg3kzE3wRwzeaBfL_ItzX8hc&usqp=CAU' alt='pomodoro-clock' />
+        <p>O método se chama “Pomodoro” (tomate, em italiano) porque Cirillo usava um daqueles relógios de cozinha em formato de tomate para controlar o seu tempo.</p>
+      </footer>
     </div>
   );
 };
