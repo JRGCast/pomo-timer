@@ -1,5 +1,6 @@
 {
   "name": "pomo-timer",
+  "homepage": "https://jrgcast.github.io/pomo-timer/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
